@@ -1,7 +1,8 @@
 const fs = require('fs');
+const newTask = process.argv.slice(3).join(' ');
 
-const content = fs.readFileSync('./commands/newfile', 'utf8');
-fs.writeFileSync('./commands/newfile2.txt', content);
+const content = fs.readFileSync('./tasks.json', 'utf8');
+fs.writeFileSync('./tasks.json', content);
 
 const list = fs.readFileSync('tasks.json', 'utf8')
 
@@ -15,11 +16,10 @@ const list = fs.readFileSync('tasks.json', 'utf8')
 //what if it is passed something that is not a string?
 
 const add = (newTask) => {
-//keep this simple- write a function that adds the item to the JSON file.
-console.log('ya did it')
+console.log(newTask)
 };
 
 
 
 
-module.exports = add(itemToDo);
+module.exports = add(newTask);
