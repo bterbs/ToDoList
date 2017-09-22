@@ -13,7 +13,7 @@ const list = require('./commands/list.js');
 
 switch(action){
   case 'add':
-    add(newTask);
+  add(newTask);
     break;
 
   case 'delete':
