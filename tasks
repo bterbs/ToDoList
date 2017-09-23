@@ -21,7 +21,7 @@ switch(action){
     break;
 
   case 'list':
-    console.log('list function')
+    list();
     break;
 
     case 'complete':
