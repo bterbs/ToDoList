@@ -8,19 +8,17 @@ const add = (newTask) => {
       let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
 
       listArr.push(newTask);
-      console.log(listArr);
       const listJSON = JSON.stringify(listArr);
       fs.writeFileSync('./myList.json', listJSON);
-      
+
     } else {
         let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
 
         listArr.push(newTask);
-        console.log(listArr);
         const listJSON = JSON.stringify(listArr);
         fs.writeFileSync('./myList.json', listJSON);
     };
-   console.log('added ' + newTask)
+   
  };
 
 
