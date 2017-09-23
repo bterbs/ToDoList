@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const action = process.argv[2];
 const newTask = process.argv.slice(3).join(' ');
+const task_id = process.argv[3];
 const add = require('./commands/add.js');
 const complete = require('./commands/complete.js');
 // const delete = require('./commands/delete.js');
@@ -25,6 +26,6 @@ switch(action){
     break;
 
     case 'complete':
-      console.log('completed ' + string)
+      complete(task_id);
       break;
 }
