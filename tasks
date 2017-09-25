@@ -7,7 +7,7 @@ const newTask = process.argv.slice(3).join(' ');
 const task_id = process.argv[3];
 const add = require('./commands/add.js');
 const complete = require('./commands/complete.js');
-// const delete = require('./commands/delete.js');
+const del = require('./commands/del.js');
 const list = require('./commands/list.js');
 
 
@@ -17,8 +17,8 @@ switch(action){
   add(newTask);
     break;
 
-  case 'delete':
-    console.log('delete ' + string)
+  case 'del':
+    del();
     break;
 
   case 'list':
