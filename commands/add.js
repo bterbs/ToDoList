@@ -7,9 +7,10 @@ if(!fs.existsSync('./myList.json')){
 
 const add = (newTask) => {
         let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
+        const lastItem = listArr[listArr.length - 1]
 
         listArr.push({
-          "id_number": listArr.length+1,
+          "id_number": lastItem ? lastItem.id_number + 1 : 1,
           "task": newTask,
           "completed": false,
         });
