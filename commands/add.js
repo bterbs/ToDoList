@@ -17,8 +17,10 @@ const add = (newTask) => {
         listArr.push(newTask);
         const listJSON = JSON.stringify(listArr);
         fs.writeFileSync('./myList.json', listJSON);
+
+        console.log('Created task ' + listArr.length);
     };
-   
+
  };
 
 
