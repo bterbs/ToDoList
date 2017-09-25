@@ -6,6 +6,8 @@ const list = () => {
   console.log('-- -----------');
   items.forEach((item, index) => {
     console.log(index+1 + ' ' + item)});
+    console.log(' ')
+    console.log('You have ' + items.length + ' tasks');
 };
 
 module.exports = list;
