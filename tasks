@@ -1,31 +1,30 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-
 const action = process.argv[2];
 const newTask = process.argv.slice(3).join(' ');
-const task_id = process.argv[3];
 const add = require('./commands/add.js');
 const complete = require('./commands/complete.js');
-// const delete = require('./commands/delete.js');
+const del = require('./commands/del.js');
 const list = require('./commands/list.js');
 
 
-
-switch(action){
+switch (action) {
   case 'add':
-  add(newTask);
+    add(newTask);
     break;
 
-  case 'delete':
-    console.log('delete ' + string)
+  case 'del':
+    del();
     break;
 
   case 'list':
     list();
     break;
 
-    case 'complete':
-      complete(task_id);
-      break;
+  case 'complete':
+    complete();
+    break;
+
+  default:
+    console.log('That is an invalid command, please try again.');
 }

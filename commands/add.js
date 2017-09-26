@@ -1,24 +1,24 @@
 const fs = require('fs');
 const newTask = process.argv.slice(3).join(' ');
 
+if(!fs.existsSync('./tasks.json')){
+  fs.writeFileSync('', '[]');
+};
 
 const add = (newTask) => {
-    if(!fs.existsSync('./myList.json')){
-      fs.writeFileSync('./myList.json', '[]');
-      let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
+        let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
+        const lastItem = listArr[listArr.length - 1]
 
-      listArr.push(newTask);
-      const listJSON = JSON.stringify(listArr);
-      fs.writeFileSync('./myList.json', listJSON);
+        listArr.push({
+          "id_number": lastItem ? lastItem.id_number + 1 : 1,
+          "task": newTask,
+          "completed": false,
+        });
 
-    } else {
-        let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
-
-        listArr.push(newTask);
         const listJSON = JSON.stringify(listArr);
-        fs.writeFileSync('./myList.json', listJSON);
-    };
-   
+        fs.writeFileSync('./tasks.json', listJSON);
+
+        console.log('Created task ' );
  };
 
 

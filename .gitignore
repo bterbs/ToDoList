@@ -1,3 +1,5 @@
+mylist.json #this makes git ignore the myList file
+
 # Logs
 logs
 *.log
@@ -56,4 +58,3 @@ typings/
 
 # dotenv environment variables file
 .env
-

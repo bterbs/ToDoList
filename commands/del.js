@@ -1,24 +1,23 @@
 const fs = require('fs');
-const task_id = (process.argv[3]);
+const task_id = process.argv.slice(3).join(' ');
 let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
 
-const complete = () => {
+const del = () => {
+  var removed = []
   const newArr = []
-  var completed
   for (var i = 0; i <listArr.length; i++) {
     if(listArr[i].id_number != task_id) {
       newArr.push(listArr[i]);
     } else {
-      listArr[i].completed = true;
-      completed = listArr[i].task;
-      newArr.push(listArr[i]);
+      removed.push(listArr[i]);
     };
   };
 
   const listJSON = JSON.stringify(newArr);
   fs.writeFileSync('./tasks.json', listJSON);
 
-  console.log('Completed task ' + task_id + ': ' + completed);
+  console.log('Deleted task ' + removed[0].id_number + ': ' + removed[0].task);
 };
 
-module.exports = complete;
+
+module.exports = del;
