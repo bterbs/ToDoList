@@ -12,8 +12,15 @@ const list = () => {
     };
   };
 
+  var counter = 0;
+  for (var i = 0; i < items.length; i++) {
+    if(items[i].completed === false){
+      counter+=1;
+    };
+  };
+
     console.log(' ')
-    console.log('You have ' + items.length + ' tasks');
+    console.log('You have ' + counter + ' tasks');
 };
 
 module.exports = list;
