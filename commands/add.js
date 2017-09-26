@@ -2,8 +2,9 @@ const fs = require('fs');
 const newTask = process.argv.slice(3).join(' ');
 
 const add = (newTask) => {
+
         let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
-        const lastItem = listArr[listArr.length - 1]
+        const lastItem = listArr[listArr.length - 1];
 
         listArr.push({
           "id_number": lastItem ? lastItem.id_number + 1 : 1,
@@ -15,6 +16,7 @@ const add = (newTask) => {
         fs.writeFileSync('./tasks.json', listJSON);
 
         console.log('Created task ' );
+
  };
 
 
