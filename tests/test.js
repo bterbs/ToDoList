@@ -1,5 +1,22 @@
+const expect require('chai').expect;
+const add = require('../commands/add');
+require('../tasks');
 
-// add should add laundry to tasks.json, which is my list of tasks
+describe('add()', () => {
+  it('should be a function', () => {
 
-//what if add is passed no argument?
-//what if it is passed something that is not a string?
+  })
+  it('it should return undefined', () => {
+
+  })
+  it('should add a task when file is empty', () => {
+
+  })
+  it('should add a task when file contains items', () => {
+
+  })
+  it('should print a success message', () => {
+
+  })
+
+})

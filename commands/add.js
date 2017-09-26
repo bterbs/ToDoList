@@ -1,10 +1,6 @@
 const fs = require('fs');
 const newTask = process.argv.slice(3).join(' ');
 
-if(!fs.existsSync('./tasks.json')){
-  fs.writeFileSync('', '[]');
-};
-
 const add = (newTask) => {
         let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
         const lastItem = listArr[listArr.length - 1]
