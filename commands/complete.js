@@ -1,6 +1,6 @@
 const fs = require('fs');
 const task_id = (process.argv[3]);
-let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
+let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
 
 const complete = () => {
   const newArr = []
@@ -16,7 +16,7 @@ const complete = () => {
   };
 
   const listJSON = JSON.stringify(newArr);
-  fs.writeFileSync('./myList.json', listJSON);
+  fs.writeFileSync('./tasks.json', listJSON);
 
   console.log('Completed task ' + task_id + ': ' + completed);
 };

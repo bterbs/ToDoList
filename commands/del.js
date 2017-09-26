@@ -1,6 +1,6 @@
 const fs = require('fs');
 const task_id = process.argv.slice(3).join(' ');
-let listArr = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
+let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
 
 const del = () => {
   var removed = []
@@ -14,7 +14,7 @@ const del = () => {
   };
 
   const listJSON = JSON.stringify(newArr);
-  fs.writeFileSync('./myList.json', listJSON);
+  fs.writeFileSync('./tasks.json', listJSON);
 
   console.log('Deleted task ' + removed[0].id_number + ': ' + removed[0].task);
 };

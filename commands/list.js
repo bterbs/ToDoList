@@ -1,5 +1,5 @@
 const fs = require('fs');
-let items = JSON.parse(fs.readFileSync('./myList.json', 'utf8'));
+let items = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
 
 
 const list = () => {
