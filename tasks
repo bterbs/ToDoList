@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const createFileIfNeeded = require('./fileio/fileio.js').createFileIfNeeded; 
 
-if (!fs.existsSync('./tasks.json')) {
-  fs.writeFileSync('./tasks.json', '[]');
-}
+// if (!fs.existsSync('taskFile')) {
+//   fs.writeFileSync('taskFile', '[]');
+// }
+
 const action = process.argv[2];
 const newTask = process.argv.slice(3).join(' ');
 const add = require('./commands/add.js');

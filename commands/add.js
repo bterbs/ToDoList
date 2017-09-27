@@ -1,9 +1,12 @@
 const fs = require('fs');
+const { readFromFile, writeToFile } = require('../fileio/fileio')
 const newTask = process.argv.slice(3).join(' ');
+const taskFile =
+  process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
 
 const add = (newTask) => {
 
-        let listArr = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
+        let listArr = readFromFile(taskFile);
         const lastItem = listArr[listArr.length - 1];
 
         listArr.push({
@@ -13,7 +16,7 @@ const add = (newTask) => {
         });
 
         const listJSON = JSON.stringify(listArr);
-        fs.writeFileSync('./tasks.json', listJSON);
+        writeToFile(listJSON);
 
         console.log('Created task ' );
 

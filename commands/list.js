@@ -1,6 +1,8 @@
 const fs = require('fs');
-let items = JSON.parse(fs.readFileSync('./tasks.json', 'utf8'));
-
+const readFromFile = require('../fileio/fileio.js').readFromFile;
+const taskFile =
+  process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
+var items = readFromFile(taskFile);
 
 const list = () => {
   console.log('ID Description');
