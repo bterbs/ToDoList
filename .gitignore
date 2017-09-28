@@ -1,3 +1,5 @@
+# bds: tasksTest.json should be in this .gitignore file as well
+
 tasks.json #this makes git ignore the actual to do list file
 
 # Logs
