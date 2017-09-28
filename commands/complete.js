@@ -2,9 +2,9 @@ const fs = require('fs');
 const { readFromFile, writeToFile } = require('../fileio/fileio.js');
 const taskFile =
   process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
-let listArr = readFromFile(taskFile);
 
 const complete = (task_id) => {
+  let listArr = readFromFile(taskFile);
   const newArr = []
   var completed
   for (var i = 0; i <listArr.length; i++) {

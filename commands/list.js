@@ -2,9 +2,10 @@ const fs = require('fs');
 const readFromFile = require('../fileio/fileio.js').readFromFile;
 const taskFile =
   process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
-var items = readFromFile(taskFile);
+
 
 const list = () => {
+  var items = readFromFile(taskFile);
   console.log('ID Description');
   console.log('-- -----------');
 

@@ -9,59 +9,63 @@ const taskFile =
 const { readFromFile, writeToFile } = require('../fileio/fileio.js');
 
 
-//context('ToDo Functionality', () => {
-  // beforeEach(() => {
-  //   fs.writeFileSync(taskFile, '[]');
-  // });
+context('ToDo Functionality', () => {
+  beforeEach(() => {
+    fs.writeFileSync(taskFile, '[]');
+  });
 
-  // describe('add()', () => {
-  //   it('should be a function', () => {
-  //     expect(add).to.be.a('function');
-  //   })
-  //   it('it should return undefined', () => {
-  //     expect(add('new item')).to.be.an('undefined');
-  //   })
-  //   it('should add a task to the task file', () => {
-  //     var testArr = readFromFile(taskFile).length;
-  //     add('new item');
-  //     var finalArr = readFromFile(taskFile).length;
-  //     expect(finalArr).to.equal(testArr+1);
-  //   })
-  // })
-  //
-  // describe('del()', () => {
-  //   it('should be a function', () => {
-  //     expect(del).to.be.a('function');
-  //   })
-  //   it('should delete a task from the task file', () => {
-  //     let testVal = 2;
-  //     add('wash dog');
-  //     add('make dinner');
-  //     var testArr = readFromFile(taskFile).length;
-  //     del(testVal);
-  //     var testArrFinal = readFromFile(taskFile).length;
-  //     expect(testArrFinal).to.equal(testArr-1);
-  //   })
-  // })
+  describe('add()', () => {
+    it('should be a function', () => {
+      expect(add).to.be.a('function');
+    })
+    it('it should return undefined', () => {
+      expect(add('new item')).to.be.an('undefined');
+    })
+    it('should add a task to the task file', () => {
+      var testArr = readFromFile(taskFile).length;
+      add('new item');
+      var finalArr = readFromFile(taskFile).length;
+      expect(finalArr).to.equal(testArr+1);
+    })
+  })
 
-  // describe('complete()', () => {
-  //   it('should be a function', () => {
-  //     expect(complete).to.be.a('function');
-  //   })
+  describe('del()', () => {
+    it('should be a function', () => {
+      expect(del).to.be.a('function');
+    })
+    it('should delete a task from the task file', () => {
+      let testVal = 2;
+      add('wash dog');
+      add('make dinner');
+      var testArr = readFromFile(taskFile).length;
+      del(testVal);
+      var testArrFinal = readFromFile(taskFile).length;
+      expect(testArrFinal).to.equal(testArr-1);
+    })
+  })
+
+  describe('complete()', () => {
+    it('should be a function', () => {
+      expect(complete).to.be.a('function');
+    })
     it('should mark the task as complete', () => {
       let testVal = 1;
       add('wash dog');
       add('make dinner');
-      complete(1);
+      complete(testVal);
+      console.log(readFromFile(taskFile));
+      expect()
     })
-//  })
+  })
 
-  // describe('list()', () => {
-  //   it('should be a function', () => {
-  //     expect(list).to.be.a('function');
-  //   })
-  //   it('should output a list of tasks', () => {
-  //
-  //   })
-  // })
-//})
+  describe('list()', () => {
+    it('should be a function', () => {
+      expect(list).to.be.a('function');
+    })
+    it('should output a list of tasks', () => {
+      add('wash dog');
+      add('make dinner');
+      console.log(list());
+    })
+  })
+})
