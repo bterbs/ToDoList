@@ -1,5 +1,8 @@
 const fs = require('fs');
 const readFromFile = require('../fileio/fileio.js').readFromFile;
+
+// bds: this taskFile line should be confined to fileio, instead of repeated
+// bds: in each of the commands files
 const taskFile =
   process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
 

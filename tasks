@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
+// bds: eslint flags these next two lines for me because the consts are never used.
+// bds: are you using eslint?
 const fs = require('fs');
 const createFileIfNeeded = require('./fileio/fileio.js').createFileIfNeeded;
 
+// bds: all requires should be by themselves at the top -- the lines that
+// bds: parse process.argv should be moved to after the require statements
 const action = process.argv[2];
 const input = process.argv.slice(3).join(' ');
 const add = require('./commands/add.js');
@@ -31,3 +35,28 @@ switch (action) {
   default:
     console.log('That is an invalid command, please try again.');
 }
+
+/* bds: when I tried to run this "out of the box" (after just cloning), I got
+this error:
+
+./tasks add new task
+fs.js:641
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: ENOENT: no such file or directory, open './tasks.json'
+    at Error (native)
+    at Object.fs.openSync (fs.js:641:18)
+    at Object.fs.readFileSync (fs.js:509:33)
+    at readFromFile (/Users/bonnie/src/code_reviews/brittany/ToDoList/fileio/fileio.js:22:50)
+    at add (/Users/bonnie/src/code_reviews/brittany/ToDoList/commands/add.js:7:23)
+    at Object.<anonymous> (/Users/bonnie/src/code_reviews/brittany/ToDoList/tasks:16:5)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+*******
+
+Consider adding a test that makes sure the file is created if it doesn't already
+exist.
+*/

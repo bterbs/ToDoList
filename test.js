@@ -1,3 +1,5 @@
+// bds: this file should not be removed from the git repo, since it's not being used
+
 // const expect = require('chai').expect
 // const { exec } = require('child_process');
 //

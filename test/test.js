@@ -14,6 +14,10 @@ context('ToDo Functionality', () => {
     fs.writeFileSync(taskFile, '[]');
   });
 
+  // bds: You should have an afterEach() or after() that removes the
+  // bds: tasksTest.json file, so it doesn't persist after the tests have been
+  // bds: run
+
   describe('add()', () => {
     it('should be a function', () => {
       expect(add).to.be.a('function');
