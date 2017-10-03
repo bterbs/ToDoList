@@ -1,4 +1,5 @@
-tasks.json #this makes git ignore the actual to do list file
+tasks.json
+tasksTest.json #this makes git ignore the actual to do list file and test file
 
 # Logs
 logs
