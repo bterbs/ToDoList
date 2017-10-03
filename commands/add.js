@@ -1,19 +1,19 @@
 const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio');
 
 const add = (newTask) => {
-  const listArr = readFromFile(taskFile);
-  const lastItem = listArr[listArr.length - 1];
+  const tasks = readFromFile(taskFile);
+  const lastItem = tasks[tasks.length - 1];
 
-  listArr.push({
+  tasks.push({
     id_number: lastItem ? lastItem.id_number + 1 : 1,
     task: newTask,
     completed: false,
   });
 
-  const listJSON = JSON.stringify(listArr);
+  const listJSON = JSON.stringify(tasks);
   writeToFile(listJSON);
 
-  const taskNum = listArr[listArr.length - 1].id_number;
+  const taskNum = tasks[tasks.length - 1].id_number;
 
   console.log(`Created task ${taskNum}: ${newTask}`);
 };
