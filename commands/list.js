@@ -5,25 +5,25 @@ const taskFile =
 
 
 const list = () => {
-  var items = readFromFile(taskFile);
+  let items = readFromFile(taskFile);
   console.log('ID Description');
   console.log('-- -----------');
 
-  for (var i = 0; i < items.length; i++) {
-    if(items[i].completed === false){
-    console.log(items[i].id_number + ' ' + items[i].task)
-    };
-  };
+  for (let i = 0; i < items.length; i++) {
+    if(items[i].completed === false) {
+      console.log(items[i].id_number + ' ' + items[i].task)
+    }
+  }
 
-  var counter = 0;
+  let counter = 0;
   for (var i = 0; i < items.length; i++) {
-    if(items[i].completed === false){
-      counter+=1;
-    };
-  };
+    if (items[i].completed === false) {
+      counter += 1;
+    }
+  }
 
-    console.log(' ')
-    console.log('You have ' + counter + ' tasks');
+  console.log(' ')
+  console.log(`You have ${counter} tasks`);
 };
 
 module.exports = list;
