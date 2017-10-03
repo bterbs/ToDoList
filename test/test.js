@@ -4,9 +4,7 @@ const add = require('../commands/add.js');
 const complete = require('../commands/complete.js');
 const del = require('../commands/del.js');
 const list = require('../commands/list.js');
-const taskFile =
-  process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
-const { readFromFile, writeToFile } = require('../fileio/fileio.js');
+const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
 
 
 context('ToDo Functionality', () => {
