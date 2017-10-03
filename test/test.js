@@ -9,7 +9,7 @@ const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
 
 context('ToDo Functionality', () => {
   beforeEach(() => {
-    fs.writeFileSync(taskFile, '[]');
+    fs.writeFileSync(taskFile, '[{"id_number":1,"task":"wash dog","completed":false},{"id_number":2,"task":"clean dishes","completed":false}]');
   });
 
   describe('add()', () => {
@@ -20,10 +20,9 @@ context('ToDo Functionality', () => {
       expect(add('new item')).to.be.an('undefined');
     })
     it('should add a task to the task file', () => {
-      var testArr = readFromFile(taskFile).length;
-      add('new item');
-      var finalArr = readFromFile(taskFile).length;
-      expect(finalArr).to.equal(testArr+1);
+      add('check mail');
+      const testCountAfter = readFromFile(taskFile).length;
+      expect(testCountAfter).to.equal(3);
     })
   })
 
@@ -32,13 +31,9 @@ context('ToDo Functionality', () => {
       expect(del).to.be.a('function');
     })
     it('should delete a task from the task file', () => {
-      let testVal = 2;
-      add('wash dog');
-      add('make dinner');
-      var testArr = readFromFile(taskFile).length;
-      del(testVal);
-      var testArrFinal = readFromFile(taskFile).length;
-      expect(testArrFinal).to.equal(testArr-1);
+      del(2);
+      const testLengthAfter = readFromFile(taskFile).length;
+      expect(testLengthAfter).to.equal(1);
     })
   })
 
@@ -47,12 +42,9 @@ context('ToDo Functionality', () => {
       expect(complete).to.be.a('function');
     })
     it('should mark the task as complete', () => {
-      let testVal = 1;
-      add('wash dog');
-      add('make dinner');
-      complete(testVal);
-      console.log(readFromFile(taskFile));
-      expect()
+      complete(1);
+      const testLengthAfter = readFromFile(taskFile).length;
+      expect(testLengthAfter).to.equal(1);
     })
   })
 
@@ -61,8 +53,6 @@ context('ToDo Functionality', () => {
       expect(list).to.be.a('function');
     })
     it('should output a list of tasks', () => {
-      add('wash dog');
-      add('make dinner');
       console.log(list());
     })
   })
