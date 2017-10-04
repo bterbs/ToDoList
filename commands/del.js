@@ -1,23 +1,16 @@
-const fs = require('fs');
-const { readFromFile, writeToFile } = require('../fileio/fileio.js');
-const taskFile =
-  process.env.NODE_ENV ===
-   'test' ? './tasksTest.json' : './tasks.json';
+const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
 
+function del(taskId) {
+  let tasks = readFromFile(taskFile);
 
-function del(task_id) {
-  var newArr
-  let listArr = readFromFile(taskFile);
-
-  newArr = listArr.filter(function( value, index, array) {
-    return (listArr[index].id_number != task_id)
+  let remainingTasks = tasks.filter(function( value, index, array) {
+    return (tasks[index].id_number != taskId)
   })
 
+  writeToFile(JSON.stringify(remainingTasks));
 
-  const listJSON = JSON.stringify(newArr);
-  writeToFile(listJSON);
-
-  console.log(`Deleted task ${task_id}`);
+  console.log(`Deleted task ${taskId}`);
+  return remainingTasks;
 }
 
 
