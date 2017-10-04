@@ -10,8 +10,7 @@ const add = (newTask) => {
     completed: false,
   });
 
-  const listJSON = JSON.stringify(tasks);
-  writeToFile(listJSON);
+  writeToFile(JSON.stringify(tasks));
 
   const taskNum = tasks[tasks.length - 1].id_number;
 

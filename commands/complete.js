@@ -1,26 +1,20 @@
-const fs = require('fs');
-const { readFromFile, writeToFile } = require('../fileio/fileio.js');
-const taskFile =
-  process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
+const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
 
-const complete = (task_id) => {
-  let listArr = readFromFile(taskFile);
-  const newArr = []
-  var completed
-  for (var i = 0; i <listArr.length; i++) {
-    if(listArr[i].id_number != task_id) {
-      newArr.push(listArr[i]);
-    } else {
-      listArr[i].completed = true;
-      completed = listArr[i].task;
-      newArr.push(listArr[i]);
+const complete = (taskId) => {
+  const myTasks = readFromFile(taskFile);
+  let completed;
+
+  myTasks.map(function(task) {
+    if (task.id_number == taskId) {
+      task.completed = true;
+      completed = task.task;
     };
-  };
+  });
 
-  const listJSON = JSON.stringify(newArr);
-  writeToFile(listJSON);
+  writeToFile(JSON.stringify(myTasks));
 
-  console.log(`Completed task ${task_id}: ${completed}`);
+  console.log(`Completed task ${taskId}: ${completed}`);
+  return myTasks;
 };
 
 module.exports = complete;
