@@ -1,11 +1,11 @@
 const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
 
 function del(taskId) {
-  let tasks = readFromFile(taskFile);
+  const tasks = readFromFile(taskFile);
 
-  let remainingTasks = tasks.filter(function( value, index, array) {
+  const remainingTasks = tasks.filter(function( value, index, array) {
     return (tasks[index].id_number != taskId)
-  })
+  });
 
   writeToFile(JSON.stringify(remainingTasks));
 

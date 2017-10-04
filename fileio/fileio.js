@@ -31,4 +31,4 @@ module.exports = {
   readFromFile,
   writeToFile,
   taskFile,
-}
+};
