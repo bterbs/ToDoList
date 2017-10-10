@@ -2,33 +2,38 @@
 
 const fs = require('fs');
 const createFileIfNeeded = require('./fileio/fileio.js').createFileIfNeeded;
-
-const action = process.argv[2];
-const input = process.argv.slice(3).join(' ');
 const add = require('./commands/add.js');
 const complete = require('./commands/complete.js');
 const del = require('./commands/del.js');
 const list = require('./commands/list.js');
 
+const action = process.argv[2];
+const input = process.argv.slice(3).join(' ');
+
 createFileIfNeeded();
 
+if (action !== 'list' && !input) {
+  console.log('Oops! You forgot to specify a task!')
+} else {
 switch (action) {
-  case 'add':
-    add(input);
-    break;
 
-  case 'del':
-    del(input);
-    break;
+    case 'add':
+      add(input);
+      break;
 
-  case 'list':
-    list();
-    break;
+    case 'del':
+      del(input);
+      break;
 
-  case 'complete':
-    complete(input);
-    break;
+    case 'list':
+      list();
+      break;
 
-  default:
-    console.log('That is an invalid command, please try again.');
+    case 'complete':
+      complete(input);
+      break;
+
+    default:
+      console.log('That is an invalid command, please try again.');
+  }
 }

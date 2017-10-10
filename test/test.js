@@ -43,8 +43,11 @@ context('ToDo Functionality', () => {
     })
     it('should mark the task as complete', () => {
       complete(1);
-      const testLengthAfter = readFromFile(taskFile).length;
-      expect(testLengthAfter).to.equal(1);
+      const testArrayAfter = readFromFile(taskFile);
+      const completedItems = testArrayAfter.filter(function(item) {
+        return item.completed;
+      });
+      expect(completedItems.length).to.equal(1);
     })
   })
 

@@ -14,7 +14,7 @@ const complete = (taskId) => {
   writeToFile(JSON.stringify(myTasks));
 
   console.log(`Completed task ${taskId}: ${completed}`);
-  return myTasks;
+  return 
 };
 
 module.exports = complete;
