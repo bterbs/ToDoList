@@ -4,8 +4,10 @@ const add = require('../commands/add.js');
 const complete = require('../commands/complete.js');
 const del = require('../commands/del.js');
 const list = require('../commands/list.js');
-const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
+const { readFromFile, taskFile } = require('../fileio/fileio.js');
 
+/* Test File does not reflect update of code from synchronous to asynchronous.
+*/
 
 context('ToDo Functionality', () => {
   beforeEach(() => {
