@@ -3,8 +3,15 @@ const fs = require('fs');
 const taskFile =
   process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
 
+const readFromFile = (x, callback) => {
+  fs.readFile(taskFile, 'utf8', function(err, file) {
+    const parsedJSON = JSON.parse(file);
+    callback(parsedJSON);
+  })
+}
+
 const initializeFile = () => {
-  fs.writeFileSync(taskFile, '[]');
+  fs.writeFile(taskFile, '[]');
 };
 
 const createFileIfNeeded = () => {
@@ -19,10 +26,8 @@ const createFileIfNeeded = () => {
   }
 };
 
-const readFromFile = taskFile => JSON.parse(fs.readFileSync(taskFile), 'utf 8');
-
 const writeToFile = (jsonString) => {
-  fs.writeFileSync(taskFile, jsonString);
+  fs.writeFile(taskFile, jsonString);
 };
 
 module.exports = {

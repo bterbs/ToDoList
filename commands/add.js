@@ -1,7 +1,17 @@
 const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio');
 
-const add = (newTask) => {
-  const tasks = readFromFile(taskFile);
+const newTask = process.argv.slice(3).join(' ');
+
+const add = function (newTask) {
+  return readFromFile(taskFile, processFile)
+};
+
+/* processFile accepts the parsedJSON 'tasks' file as an argument
+ and modifies it, it adds to the tasks list and is run as a callback
+ so that it will be run AFTER fs.readFile returns in the readFromFile
+ function
+ */
+const processFile = function(tasks){
   const lastItem = tasks[tasks.length - 1];
 
   tasks.push({
@@ -15,6 +25,7 @@ const add = (newTask) => {
   const taskNum = tasks[tasks.length - 1].id_number;
 
   console.log(`Created task ${taskNum}: ${newTask}`);
-};
+}
+
 
 module.exports = add;

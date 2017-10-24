@@ -1,7 +1,10 @@
 const { taskFile, readFromFile } = require('../fileio/fileio.js');
 
 const list = () => {
-  const items = readFromFile(taskFile);
+  return readFromFile(taskFile, listedFile);
+}
+
+const listedFile = function(items){
   console.log('ID Description');
   console.log('-- -----------');
   let counter = 0;
@@ -15,5 +18,6 @@ const list = () => {
 
   console.log(`\nYou have ${counter} tasks`);
 };
+
 
 module.exports = list;
