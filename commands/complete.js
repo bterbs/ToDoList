@@ -1,7 +1,12 @@
 const { readFromFile, writeToFile, taskFile } = require('../fileio/fileio.js');
 
+const taskId = process.argv.slice(3).join(' ');
+
 const complete = (taskId) => {
-  const myTasks = readFromFile(taskFile);
+  return readFromFile(taskFile, completedFile);
+};
+
+const completedFile = function(myTasks) {
   let completed;
 
   myTasks.map(function(task) {
@@ -14,7 +19,7 @@ const complete = (taskId) => {
   writeToFile(JSON.stringify(myTasks));
 
   console.log(`Completed task ${taskId}: ${completed}`);
-  return 
+  return
 };
 
 module.exports = complete;

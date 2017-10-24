@@ -1,8 +1,9 @@
 const fs = require('fs');
+
 const taskFile =
   process.env.NODE_ENV === 'test' ? './tasksTest.json' : './tasks.json';
 
-const readFromFile = (taskFile, callback) => {
+const readFromFile = (x, callback) => {
   fs.readFile(taskFile, 'utf8', function(err, file) {
     const parsedJSON = JSON.parse(file);
     callback(parsedJSON);
